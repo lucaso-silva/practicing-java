@@ -4,12 +4,12 @@ public class CheckDivisibility
 {
 	public static void main(String[] args)
 	{
-		double number;
+		int number;
 		
 		Scanner in = new Scanner(System.in);
 		
 		System.out.println("Please enter a positive value");
-		number = in.nextDouble();
+		number = in.nextInt();
 		
 		if(number <= 0) {
 			System.out.println("Enter a positive number");

@@ -4,11 +4,11 @@ public class DivisibleBy2Or3
 {
 	public static void main(String[] args)
 	{
-		double num;
+		int num;
 		
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter a positive number");
-		num = in.nextDouble();
+		num = in.nextInt();
 		
 		if(num <= 0) {
 			System.out.println("Please. Enter a positive number!\n");
