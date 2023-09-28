@@ -27,6 +27,5 @@ public class GuessANumber3Tries
 				}
 			}
 		}
-		
 	}
 }
