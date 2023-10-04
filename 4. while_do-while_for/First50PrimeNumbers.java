@@ -4,26 +4,20 @@ public class First50PrimeNumbers
 {
 	public static void main(String[] args)
 	{
-		int range, numDiv, numPrimeFound = 0;
-
-		while(numPrimeFound <= 50){
-			range = 2;
-			numDiv = 0;
-			
-			for(int i=1; i < range ;i++) {
-				if(range%i == 0){
-					numDiv = numDiv + 1;
-				} else {
-					numDiv = numDiv;
+		int number = 1, numOfDiv = 0, primeNumbersFound = 0;
+		
+		while(primeNumbersFound <= 50) {
+			for(int count = 0; count <= number; count++) {
+				if(number % count == 0) {
+					numOfDiv++;
 				}
-				
-				if(numDiv == 1) {
-					numPrimeFound = numPrimeFound + 1;
-					System.out.print(i + ", ");
-				}
-			
 			}
-			range = range + 1;
+			if(numOfDiv == 2) {
+					System.out.println(number);
+					primeNumbersFound++;
+				}
+						
 		}
+		number++;
 	}
 }
