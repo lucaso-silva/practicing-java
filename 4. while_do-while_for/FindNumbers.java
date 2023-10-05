@@ -8,7 +8,7 @@ public class FindNumbers
 	public static void main(String[] args)
 	{
 			
-		for(int number = 10; number < 30; number++) {
+		for(int number = 10; number < 1000; number++) {
 			String numberChecked = Integer.toString(number);
 			
 			if(!numberChecked.endsWith("0")) {
@@ -19,7 +19,10 @@ public class FindNumbers
 				
 				int numberObtained = Integer.parseInt(numberWithoutLastDigit);
 				
-				System.out.print(numberObtained + " ");
+				if(number % numberObtained == 0) {
+					System.out.print(number + " ");
+				}
+				
 			}
 		}
 	}
