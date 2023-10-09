@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class CountWords
 {
-	public  static void main(String[] args)
+	public static void main(String[] args)
 	{
 		Scanner in = new Scanner(System.in);
 		String text;
@@ -25,14 +25,26 @@ public class CountWords
 	public static int count_words(String text)
 	{
 		int numberOfwords = 0;
+		//char ch;
 		
 		if(text.length() == 0) {
 			System.out.println("The word must have at least 1 character");
 		} 
 		
 		else {		
-			for(int i = 0; i < text.length(); i++){
-				numberOfwords++;
+			/**for(int i = 0; i < text.length(); i++){	
+				ch = text.charAt(i);
+				
+				if(ch.toCharArray() == ' ') {
+					numberOfwords++;
+				}
+				
+				System.out.println(ch);
+			}*/
+			for (char ch : text.toCharArray()) {
+				if(ch == ' ') {
+					numberOfwords++;
+				}
 			}
 		}
 		return numberOfwords;
