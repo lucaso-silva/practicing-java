@@ -1,16 +1,29 @@
+import java.util.Scanner;
+
 public class MakeATriangle
 {
 	public static void main(String[] args)
 	{
-		int num = 5;
+		Scanner in = new Scanner(System.in);
+		int num;
 		
-		for(int row = 1; row <= num; row++)
-		{
-			for(int col = 0; col < row; col++)
+		System.out.println("Enter the side of the Triangle");
+		num = in.nextInt();
+		
+		if(num <= 0) {
+			System.out.println("ERROR:Enter a positive value");
+			return;
+		
+		} else {
+			for(int row = 1; row <= num; row++)
 			{
-				System.out.print(col + " ");
+				char ch = 'A';
+				for(int col = 0; col < row; col++)
+				{
+					System.out.print(ch++);
+				}
+				System.out.println();
 			}
-			System.out.println();
-		}
+		}		
 	}
 }

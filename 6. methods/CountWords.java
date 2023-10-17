@@ -24,28 +24,31 @@ public class CountWords
 	
 	public static int count_words(String text)
 	{
-		int numberOfwords = 0;
+		int numberOfwords = 1, index = 0;
+		String word;
 		//char ch;
 		
 		if(text.length() == 0) {
 			System.out.println("The word must have at least 1 character");
+			
 		} 
 		
 		else {		
-			/**for(int i = 0; i < text.length(); i++){	
-				ch = text.charAt(i);
+		
+			while(index != -1) {
 				
-				if(ch.toCharArray() == ' ') {
+				text = text.trim();
+				index = text.indexOf(" ");
+				
+				if(index != -1) {
+					word = text.substring(0, index);
 					numberOfwords++;
+					text = text.substring(index + 1);
 				}
 				
-				System.out.println(ch);
-			}*/
-			for (char ch : text.toCharArray()) {
-				if(ch == ' ') {
-					numberOfwords++;
-				}
 			}
+			
+			
 		}
 		return numberOfwords;
 	}

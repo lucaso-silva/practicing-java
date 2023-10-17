@@ -11,24 +11,21 @@ public class PrintNumbersPerLine
 	public static void main(String[] args)
 	{
 		Scanner in = new Scanner(System.in);
-		String numberString; 
-		int size;
-		//int number;
+		int num;
 		
 		System.out.println("Enter a positive number");
-		numberString = in.next();
-		//number = (int)(numberString);
-		// ?? check invalid input
-		/**if(number < 0) {
-			System.out.println("Error: You must enter a positive number!");
-			return;
-		} else { */
-			size = numberString.length();
-			System.out.println();
+		num = in.nextInt();
+		
+		if(num <=0) {
+			System.out.println("ERROR: Enter a positive number");
+		} else {
+			String number = num + "";
+			char ch;
 			
-			for(int i = (size-1); i >= 0; i--) {
-			System.out.println(numberString.charAt(i));
+			for(int i = number.length() -1; i >= 0; i--) {
+				ch = number.charAt(i);
+				System.out.println(ch);
+			}
 		}
-		//}
 	}	
 }
