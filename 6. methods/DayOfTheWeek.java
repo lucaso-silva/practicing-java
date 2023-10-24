@@ -1,8 +1,8 @@
- import java.util.Scanner;
+import java.util.Scanner;
  
  public class DayOfTheWeek
  {
-	public static void main(String args[])
+	 public static void main(String args[])
    { 
     //(wip)Need input validation..
     int day, month, year;
@@ -18,11 +18,17 @@
 
     System.out.println("Enter a year: ");
     year = in.nextInt();
-
-    dayOfWeek = dayWeek(zelAlgorithm(day, month, year));
-    monthName = monthName(month);
+    
+  if(inputValidation(day, month, year)) {
+      dayOfWeek = dayWeek(zelAlgorithm(day, month, year));
+      monthName = monthName(month);
+      
+      System.out.println(monthName + " " + day + ", " + year + " is on " + dayOfWeek);
    
-    System.out.println(monthName + " " + day + ", " + year + " is on " + dayOfWeek);
+    } else {
+      
+      System.out.println("Error: invalid input");
+    }
     
   }
 
@@ -117,7 +123,66 @@
         break;
     }
     return monthName;
+    
   } 
+  
+  public static boolean inputValidation(int day, int month, int year)
+  {
+    boolean flag = true;
+    
+    if((month < 1) || (month > 12)){
+      System.out.println("Month may be between 1 and 12");
+      flag = false;
+    }
+    
+    if(day < 1 || day > 31) {
+      System.out.println("Day must be between 1 and 31");
+      flag = false;
+    } 
+    
+    if(month == 4 || month == 6 || month == 9 || month == 11){
+			if(day == 31) {
+				System.out.println("The month inputted doesn't have 31 days");
+				flag = false;
+			}
+    }
+    
+    if(month == 2) {
+		
+		if(day <= 28 ) {
+			flag = true;
+			
+		} else if(day == 29) {
+			if(isLeapYear(year)) {
+				flag = true;
+			} else {
+				System.out.println(year + " is not a leap year, day must be less than 29");
+				flag = false;
+			} 
+		} 
+    }
+    
+    return flag;
+  }
+  
+  public static boolean isLeapYear(int year)
+  {
+    boolean leap = false;
+    
+    if(year % 4 == 0) {
+      if(year % 100 == 0) {
+        leap = false;
+      }
+      
+      if(year % 400 == 0) { 
+          leap = true;
+        }
+        
+    } else {
+      leap = false;
+    }
+    return leap;
+  }
  
  }
  
