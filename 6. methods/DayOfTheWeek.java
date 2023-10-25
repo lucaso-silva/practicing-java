@@ -27,7 +27,7 @@ import java.util.Scanner;
    
     } else {
       
-      System.out.println("Error: invalid input");
+      System.out.println("ERROR: Invalid input");
     }
     
   }
@@ -131,36 +131,36 @@ import java.util.Scanner;
     boolean flag = true;
     
     if((month < 1) || (month > 12)){
-      System.out.println("Month may be between 1 and 12");
-      flag = false;
+		System.out.println("\nMonth may be between 1 and 12");
+		flag = false;
     }
     
     if(day < 1 || day > 31) {
-      System.out.println("Day must be between 1 and 31");
-      flag = false;
+		System.out.println("\nDay must be between 1 and 31");
+		flag = false;
     } 
     
     if(month == 4 || month == 6 || month == 9 || month == 11){
-			if(day == 31) {
-				System.out.println("The month inputted doesn't have 31 days");
-				flag = false;
-			}
+		if(day == 31) {
+			System.out.println( "\n" + monthName(month) + " doesn't have 31 days");
+			flag = false;
+		}
     }
     
-    if(month == 2) {
+    if((month == 2) && (day > 29)) {
+		flag = false;
+		System.out.println( "\n" + monthName(month) + " doesn't have more than 29 days");
+    } 
+	
+	if((month == 2) && (day == 29)) {
 		
-		if(day <= 28 ) {
+		if(isLeapYear(year)) {
 			flag = true;
-			
-		} else if(day == 29) {
-			if(isLeapYear(year)) {
-				flag = true;
-			} else {
-				System.out.println(year + " is not a leap year, day must be less than 29");
-				flag = false;
-			} 
-		} 
-    }
+		} else {
+			System.out.println( "\n" + year + " is not a leap year, it only has 28 days.");
+			flag = false;
+		}
+	}
     
     return flag;
   }
@@ -170,13 +170,15 @@ import java.util.Scanner;
     boolean leap = false;
     
     if(year % 4 == 0) {
-      if(year % 100 == 0) {
-        leap = false;
-      }
+		leap = true; 
       
-      if(year % 400 == 0) { 
-          leap = true;
-        }
+		if(year % 100 == 0){
+			leap = false;
+		}
+      
+		if((year % 100 == 0) && (year % 400 == 0)) { 
+			leap = true;
+		}
         
     } else {
       leap = false;
