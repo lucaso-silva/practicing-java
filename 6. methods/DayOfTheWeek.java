@@ -3,52 +3,51 @@ import java.util.Scanner;
  public class DayOfTheWeek
  {
 	 public static void main(String args[])
-   { 
-    //(wip)Need input validation..
-    int day, month, year;
-    String dayOfWeek = "", monthName = "";
-
-    Scanner in = new Scanner(System.in);
-    
-    System.out.println("Enter a day: ");
-    day = in.nextInt();
-
-    System.out.println("Enter a month: ");
-    month = in.nextInt();
-
-    System.out.println("Enter a year: ");
-    year = in.nextInt();
-    
-  if(inputValidation(day, month, year)) {
-      dayOfWeek = dayWeek(zelAlgorithm(day, month, year));
-      monthName = monthName(month);
-      
-      System.out.println(monthName + " " + day + ", " + year + " is on " + dayOfWeek);
+	{ 
    
-    } else {
+		int day, month, year;
+		String dayOfWeek = "", monthName = "";
+
+		Scanner in = new Scanner(System.in);
+    
+		System.out.println("Enter a day: ");
+		day = in.nextInt();
+
+		System.out.println("Enter a month: ");
+		month = in.nextInt();
+
+		System.out.println("Enter a year: ");
+		year = in.nextInt();
+    
+	if(inputValidation(day, month, year)) {
+		dayOfWeek = dayWeek(zelAlgorithm(day, month, year));
+		monthName = monthName(month);
       
+		System.out.println(monthName + " " + day + ", " + year + " is on " + dayOfWeek);
+		
+	} else {
       System.out.println("ERROR: Invalid input");
     }
     
   }
 
   public static int zelAlgorithm(int day, int month, int year){
-    int numOfDay, startMonth, startYear, leapFactor;
+	  int numOfDay, startMonth, startYear, leapFactor;
 
-    if(month < 3){
-      startMonth = 0;
-      startYear = year - 1;
-    } else {
-      startMonth = (int)(0.4 * month + 2.3);
-      startYear = year;
-    }
+		if(month < 3){
+			startMonth = 0;
+			startYear = year - 1;
+		} else {
+			startMonth = (int)(0.4 * month + 2.3);
+			startYear = year;
+		}
 
-    leapFactor = (startYear/4)-(startYear/100) + (startYear/400);
+		leapFactor = (startYear/4)-(startYear/100) + (startYear/400);
 
-    numOfDay = ((365 * year + 31 * (month - 1)+ day + leapFactor - startMonth) - 1 ) % 7;
+		numOfDay = ((365 * year + 31 * (month - 1)+ day + leapFactor - startMonth) - 1 ) % 7;
 
-    return numOfDay;
-  }
+		return numOfDay;
+	}
   
   public static String dayWeek(int day)
   {
