@@ -5,7 +5,7 @@ public class Calendar
 	public static void main(String[] args)
 	{
 		Scanner in = new Scanner(System.in);
-		int firstDayMonth, month, year;
+		int dayWeek, month, year;
 		
 		do {
 			System.out.println("Please enter a number for the month (1 to 12):");
@@ -21,14 +21,14 @@ public class Calendar
 
 		in.close();
 		
-		firstDayMonth = zelAlgorithm(1, month, year);
+		dayWeek = zelAlgorithm(1, month, year);
 		
 		
 		System.out.println("\n\t" + monthName(month) + ", " + year);
 		System.out.println("---------------------------------");
 		System.out.println("Sun  Mon  Tue  Wed  Thu  Fri  Sat");
 		
-		printCalendar(firstDayMonth, month, year);
+		printCalendar(dayWeek, month, year);
 		
 	}
 	
@@ -117,9 +117,9 @@ public class Calendar
 		return leap;
 	}
 
-	public static void printCalendar(int day, int month, int year) 
+	public static void printCalendar(int dayWeek, int month, int year) 
 	{
-		int numberOfDays;
+		int numberOfDays, day = 1;
 
 		if((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8) || (month == 10) || (month == 12)) {
 			numberOfDays = 31;
@@ -134,12 +134,34 @@ public class Calendar
 			numberOfDays = 28;
 		}
 
-		for (int space = day; space > 0; space--) {
+		for (int space = dayWeek; space > 0; space--) {
 			System.out.print("     ");
 		}
 
-		for(int i = 1; i <= numberOfDays; i++) {
-			System.out.print(i + "  ");
+		//first row
+		for(int col = dayWeek; col < 7; col++) {
+			System.out.print("  " + day + "  ");
+			day++;
 		}
+		System.out.println();
+
+		while(day <= numberOfDays) {
+			
+			for(int col = 1; col <= 7; col++) {
+				
+				if(day < 10) {
+					System.out.print("  " + day + "  ");
+
+				} else if(day > numberOfDays) {
+					return;
+
+				} else {
+					System.out.print(" " + day + "  ");
+				}
+				day++;
+			}
+			System.out.println();
+		} 
+	
 	}
 }
