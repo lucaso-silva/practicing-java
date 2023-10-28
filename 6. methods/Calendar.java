@@ -18,14 +18,17 @@ public class Calendar
 			year = in.nextInt();
 			
 		} while(year < 1852);
+
+		in.close();
 		
 		firstDayMonth = zelAlgorithm(1, month, year);
 		
 		
 		System.out.println("\n\t" + monthName(month) + ", " + year);
-		System.out.println("----------------------------------");
+		System.out.println("---------------------------------");
 		System.out.println("Sun  Mon  Tue  Wed  Thu  Fri  Sat");
 		
+		printCalendar(firstDayMonth, month, year);
 		
 	}
 	
@@ -74,7 +77,8 @@ public class Calendar
 		return monthName;
 	}
 	
-	public static int zelAlgorithm(int day, int month, int year){
+	public static int zelAlgorithm(int day, int month, int year)
+	{
 	  int numOfDay, startMonth, startYear, leapFactor;
 
 		if(month < 3){
@@ -90,5 +94,52 @@ public class Calendar
 		numOfDay = ((365 * year + 31 * (month - 1)+ day + leapFactor - startMonth) - 1 ) % 7;
 
 		return numOfDay;
+	}
+
+	public static boolean isLeapYear(int year)
+	{
+		boolean leap = false;
+
+		if(year % 4 == 0) {
+		  
+			if(year % 100 == 0) {
+				leap = false;
+			}
+		  
+			if((year % 100 == 0) && (year % 400 == 0)) { 
+				leap = true;
+			}
+			
+		} else {
+		  leap = false;
+		}
+
+		return leap;
+	}
+
+	public static void printCalendar(int day, int month, int year) 
+	{
+		int numberOfDays;
+
+		if((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8) || (month == 10) || (month == 12)) {
+			numberOfDays = 31;
+		
+		} else if((month == 4) || (month == 6) || (month == 9) || (month == 11)) {
+			numberOfDays = 30;
+		
+		} else if((month == 2) && (isLeapYear(year))) {
+			numberOfDays = 29;
+		
+		} else {
+			numberOfDays = 28;
+		}
+
+		for (int space = day; space > 0; space--) {
+			System.out.print("     ");
+		}
+
+		for(int i = 1; i <= numberOfDays; i++) {
+			System.out.print(i + "  ");
+		}
 	}
 }
